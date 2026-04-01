@@ -1,0 +1,17 @@
+name: Docker WebServer CI
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t my-webserver .
+
+      - name: Run container
+        run: docker run -d -p 5000:5000 --name webserver my-webserver
+
+      - name: Check container is running
+        run: docker ps | grep webserver
