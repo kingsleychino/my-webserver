@@ -1,0 +1,10 @@
+# docker-compose.yml
+version: "3.8"
+services:
+  webserver:
+    build: .
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./app:/app
+    restart: always
